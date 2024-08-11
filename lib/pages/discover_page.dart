@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:slicing_parkcar/theme/app_pallate.dart';
+import 'package:slicing_parkcar/widgets/categories.widget.dart';
 import 'package:slicing_parkcar/widgets/hero_widget.dart';
+import 'package:slicing_parkcar/widgets/inprogress_widget.dart';
+import 'package:slicing_parkcar/widgets/more.widget.dart';
+import 'package:slicing_parkcar/widgets/nearby_parking.widget.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({super.key});
@@ -10,10 +15,21 @@ class DiscoverPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFBFBFB),
       bottomNavigationBar: bottomNavigationBar(),
       body: const SingleChildScrollView(
         child: Column(
-          children: [HeroWidget()],
+          children: [
+            HeroWidget(),
+            Gap(20),
+            InprogressWidget(),
+            Gap(20),
+            NearbyParkingWidget(),
+            Gap(20),
+            CategoriesWidget(),
+            Gap(20),
+            MoreWidget(),
+          ],
         ),
       ),
     );

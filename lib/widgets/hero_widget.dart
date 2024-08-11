@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:slicing_parkcar/theme/app_pallate.dart';
@@ -18,6 +19,7 @@ class HeroWidget extends StatelessWidget {
 
   Container content() {
     return Container(
+      margin: const EdgeInsets.only(bottom: 24),
       width: double.infinity,
       padding: const EdgeInsets.only(left: 16, right: 16, top: 76, bottom: 54),
       color: AppPallate.primaryDark,
@@ -91,26 +93,37 @@ class HeroWidget extends StatelessWidget {
         left: 0,
         bottom: 0,
         right: 0,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: TextFormField(
-            cursorColor: AppPallate.colorPrimary,
-            decoration: InputDecoration(
-                hintStyle: GoogleFonts.plusJakartaSans(fontSize: 16),
-                focusColor: AppPallate.white,
-                filled: true,
-                hintText: 'Search by name or city area',
-                focusedBorder: border(),
-                enabledBorder: border(),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20, vertical: 14)),
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+                color: const Color(0xFF070625).withOpacity(.06),
+                blurRadius: 20,
+                offset: const Offset(0, 10))
+          ]),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: TextFormField(
+              decoration: InputDecoration(
+                  hintStyle: GoogleFonts.plusJakartaSans(fontSize: 16),
+                  focusColor: AppPallate.white,
+                  filled: true,
+                  hintText: 'Search by name or city area',
+                  focusedBorder: border(),
+                  enabledBorder: border(),
+                  suffixIcon: Align(
+                    heightFactor: 1,
+                    widthFactor: 1,
+                    child: SvgPicture.asset('assets/svgs/search.svg'),
+                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 14)),
+            ),
           ),
         ));
   }
 
   OutlineInputBorder border() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(50),
-    );
+        borderRadius: BorderRadius.circular(50), borderSide: BorderSide.none);
   }
 }
